@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
-const ContactForm = () => {
+const ContactForm = (props) => {
     const initialFieldValues = {
         fullName: '',
         mobile: '',
@@ -18,9 +18,13 @@ const ContactForm = () => {
             [name]: value
         })
     }
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        props.addOrEdit(values);
+    }
 
     return ( 
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleFormSubmit}>
             <div className="form-group input-group">
                 <div className="input-grou-prepend">
                     <div className="input-group-text">
